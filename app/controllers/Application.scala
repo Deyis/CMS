@@ -13,7 +13,15 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 object Application extends Controller {
 
-  def index(path: String) = Action {
+  def index = Action {
+
+    Ok(views.html.index(
+      MainPageModel(HeaderModel(Messages("header")(Lang.forCode("de"))),
+        FooterModel(Messages("footer")(Lang.forCode("de"))))))
+
+  }
+
+  def pathResolver(path: String) = Action {
     println(path)
 
     val query = BSONDocument("firstName" -> "Jack")
