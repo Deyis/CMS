@@ -1,8 +1,6 @@
 package dao
 
-/**
- * Created by Denis_Ivanchenko on 2/12/2015.
- */
+
 import reactivemongo.api._
 import reactivemongo.api.collections.default.BSONCollection
 import scala.concurrent.ExecutionContext.Implicits.global

@@ -1,12 +1,12 @@
 package services.translations
 
 import play.api.i18n.{Lang, Messages}
+import request.info.LangData
 
-/**
- * Created by Denis_Ivanchenko on 2/11/2015.
- */
+
 class TranslationService {
+
   def get(key: String, langCode: String): String = {
-    Messages(key)(Lang(langCode))
+    Messages(key)(Lang(LangData.getLanguageCode))
   }
 }

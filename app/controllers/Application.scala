@@ -1,5 +1,6 @@
 package controllers
 
+import controllers.filters.{LanguageFilter, FilterChain}
 import dao.MyMongoConnectionHelper
 import models.{FooterModel, HeaderModel, MainPageModel}
 import play.api.i18n.Messages
@@ -22,7 +23,7 @@ object Application extends Controller {
   }
 
   def pathResolver(path: String) = Action {
-    println(path)
+    new FilterChain().add(new LanguageFilter()).apply(path)
 
     val query = BSONDocument("firstName" -> "Jack")
     val filter = BSONDocument(
