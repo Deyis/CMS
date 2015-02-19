@@ -1,16 +1,17 @@
 package controllers.filters
 
+import play.api.mvc.{AnyContent, Request}
 import play.mvc.Http
 import play.mvc.Http.Session
 
 class LanguageFilter extends Filter {
 
-  override def apply(path: String, filters: List[Filter]): Unit =  {
-    println(path)
+  override def apply(request: Request[AnyContent], filters: List[Filter]): Unit =  {
+    println(request.path)
 
     val session: Session = Http.Context.current().session()
-    session.put("lang", path.substring(0,2))
+    session.put("lang", request.path.substring(0,2))
 
-    doNext(path.substring(2), filters)
+    doNext(request, filters)
   }
 }

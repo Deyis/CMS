@@ -1,11 +1,22 @@
 package controllers.filters
 
+import play.api.mvc.{AnyContent, Request}
+
 
 abstract class Filter {
 
-  def apply(path:String, filters: List[Filter])
+  def apply(request: Request[AnyContent], filters: List[Filter])
 
-  def doNext(path: String, filters: List[Filter]): Unit = {
-    filters.head.apply(path, filters.tail)
+  def doNext(request: Request[AnyContent], filters: List[Filter]): Unit = {
+    filters.head(request, filters.tail)
   }
+
+  def redirect(path: String): Unit = {
+
+  }
+
+  def error(message: String): Unit = {
+
+  }
+
 }

@@ -1,11 +1,12 @@
 package controllers.filters
 
+import play.api.mvc.{AnyContent, Request}
+
 
 class PathTranslatorFilter extends Filter {
 
-  override def apply(path: String, filters: List[Filter]): Unit =  {
+  override def apply(request: Request[AnyContent], filters: List[Filter]): Unit =  {
 
-
-    doNext(path, filters)
+    doNext(request, filters)
   }
 }

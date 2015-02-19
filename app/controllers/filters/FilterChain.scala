@@ -1,5 +1,7 @@
 package controllers.filters
 
+import play.api.mvc.{AnyContent, Request}
+
 class FilterChain() {
 
   var filters: List[Filter] = List()
@@ -9,7 +11,7 @@ class FilterChain() {
     this
   }
 
-  def apply(path: String): Unit = {
-    filters.head.apply(path, filters.tail)
+  def apply(request: Request[AnyContent]): Unit = {
+    filters.head(request, filters.tail)
   }
 }
