@@ -4,9 +4,9 @@ import play.api.i18n.{Lang, Messages}
 import request.info.LangData
 
 
-class TranslationService {
+object TranslationService {
 
-  def get(key: String, langCode: String): String = {
+  def get(key: String): String = {
     Messages(key)(Lang(LangData.getLanguageCode))
   }
 }

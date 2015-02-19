@@ -1,6 +1,7 @@
 package controllers.filters
 
 import play.api.mvc.{AnyContent, Request}
+import play.mvc.Http.Session
 
 class FilterChain() {
 
